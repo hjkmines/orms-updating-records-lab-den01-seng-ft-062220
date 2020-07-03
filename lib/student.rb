@@ -35,4 +35,16 @@ attr_reader :id
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
   end 
   
+  def self.create(name:, grade:)
+    student = Student.new(name, grade)
+    student.save 
+    student
+  end 
+  
+  def self.new_from_db(row)
+    student = Student.new(id, name, grade)
+    student.id = row[0]
+    student.name = row[1]
+    student.grade = row[2]
+  end 
 end
