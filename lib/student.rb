@@ -64,4 +64,11 @@ attr_reader :id
       new_from_db(row)
     end.first 
   end   
+  
+  def update
+    sql = <<-SQL 
+      UDPATE students 
+      
+  end
+  
 end
