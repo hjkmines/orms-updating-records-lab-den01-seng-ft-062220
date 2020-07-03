@@ -68,7 +68,10 @@ attr_reader :id
   def update
     sql = <<-SQL 
       UDPATE students 
-      
+    SET name = ?, grade = ?
+    WHERE id = ?
+  SQL
+  
   end
   
 end
