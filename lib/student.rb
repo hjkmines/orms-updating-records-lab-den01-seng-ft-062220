@@ -11,5 +11,28 @@ attr_reader :id
     @grade = grade 
   end 
   
-  def 
+  def self.create_table 
+    sql = <<-SQL 
+      CREATE TABLE IF NOT EXISTS students (
+      id INTEGER PRIMARY KEY, 
+      name TEXT, 
+      grade INTEGER
+      )
+    SQL
+    DB[:conn].execute(sql)
+  end 
+  
+  def self.drop_table 
+    DROP TABLE students 
+  end 
+  
+  def save 
+    sql = <<-SQL 
+      INSERT INTO students (name, grade)
+      VALUES (?, ?)
+    SQL
+    DB[:conn].execute(sql, self.name, self.grade)
+    @id = DB[:conn].execute(sql)
+  end 
+  
 end
