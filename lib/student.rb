@@ -71,7 +71,7 @@ attr_reader :id
     SET name = ?, grade = ?
     WHERE id = ?
   SQL
-  
+  DB[:conn].execute(sql, )
   end
   
 end
